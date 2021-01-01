@@ -1,0 +1,29 @@
+doctype
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="icon" type="image/png" href="assets/icons/favicon.png")
+    link(rel="stylesheet", href="css/styles.css")
+    title
+  body
+    main.first-row
+      section.card.card--primary
+        h1.card__titleapp Weather App
+        form.card__formulary#formulario
+            input(type="text" placeholder="Buscar" id="inputciudad" ).card__formulary__input
+            input(type="submit" id="send" value="Search").card__formulary__button 
+      section.card.card--secondary
+        .loader#loader
+        h2.card__title#title 
+        .card__temp#temp
+        img.card__img#icon
+        .card__description#description 
+        .card__humidity#humidity 
+        .card__wind#wind 
+         
+        
+      section.card.card--thrid
+
+    
+    script(src="js/scripts-min.js")

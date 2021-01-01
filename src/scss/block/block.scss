@@ -1,0 +1,66 @@
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  &__titleapp{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    font-style: italic;
+    text-transform: uppercase;
+  }
+
+  &__formulary {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+    &__input {
+      width: 80%;
+      padding: 0.6rem;
+      border-radius: 10px;
+    }
+    &__button {
+      width: 8rem;
+      padding: 0.5rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      &:hover{
+        background:gray;
+        transition: all .5s ease-in-out;
+      }
+    }
+  }
+  &__title{
+    font-size: 2rem;
+    margin: 0;
+  }
+  &__img{
+    width: 6rem;
+  }
+  &__temp{
+    font-weight: 700;
+  }
+
+  //modificadores
+  &--primary{
+    flex-direction: column;
+  }
+
+  &--secondary {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.2rem;
+  }
+
+  &--thrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
