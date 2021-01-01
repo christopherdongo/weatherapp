@@ -8,22 +8,22 @@ html(lang='en')
     title
   body
     main.first-row
-      section.card.card--primary
+      section.card.card--primary#primary
         h1.card__titleapp Weather App
         form.card__formulary#formulario
             input(type="text" placeholder="Buscar" id="inputciudad" ).card__formulary__input
             input(type="submit" id="send" value="Search").card__formulary__button 
-      section.card.card--secondary
+      section.card.card--secondary#secondary
         .loader#loader
         h2.card__title#title 
         .card__temp#temp
-        img.card__img#icon
-        .card__description#description 
+        .card__container
+          img.card__container__img#icon
+          .card__container__description#description 
         .card__humidity#humidity 
         .card__wind#wind 
-         
-        
-      section.card.card--thrid
+      section.card.card--thrid#thrid
+        article.card__next
 
     
     script(src="js/scripts-min.js")
