@@ -15,15 +15,16 @@ html(lang='en')
             input(type="submit" id="send" value="Search").card__formulary__button 
       section.card.card--secondary#secondary
         .loader#loader
+        .card__error#error
         h2.card__title#title 
         .card__temp#temp
-        .card__container
+        .card__container#card__container
           img.card__container__img#icon
           .card__container__description#description 
         .card__humidity#humidity 
         .card__wind#wind 
       section.card.card--thrid#thrid
-        article.card__next
+        
 
     
-    script(src="js/scripts-min.js")
+    script(src="js/scripts-min.js" defer)
