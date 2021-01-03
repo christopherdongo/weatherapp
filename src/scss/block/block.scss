@@ -3,9 +3,8 @@
   justify-content: center;
   align-items: center;
   align-content: center;
-
-  &__titleapp{
-    font-family: 'Courier New', Courier, monospace;
+  &__titleapp {
+    font-family: "Courier New", Courier, monospace;
     font-weight: 700;
     font-style: italic;
     text-transform: uppercase;
@@ -21,56 +20,52 @@
     gap: 10px;
     &__input {
       width: 80%;
-      padding: 0.6rem;
+      padding: 0.4rem;
       border-radius: 10px;
-
-     @media screen and (min-width:768px){
-       width: 60%;
-     }
     }
     &__button {
       width: 8rem;
-      padding: 0.5rem;
+      padding: 0.3rem;
       border-radius: 10px;
       font-weight: 700;
       font-size: 1.2rem;
       cursor: pointer;
-      &:hover{
-        background:gray;
-        transition: all .5s ease-in-out;
+      &:hover {
+        background: gray;
+        transition: all 0.5s ease-in-out;
       }
     }
   }
-  &__error{
+  &__error {
     font-size: 1.5rem;
     color: red;
     font-weight: 700;
     display: none;
-
   }
-  &__title{
+  &__title {
     font-size: 2rem;
     margin: 0;
   }
-  &__container{
+  &__container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
     max-height: 50px;
-    &__img{
+    &__img {
       width: 4rem;
     }
   }
-  &__temp{
-    margin-top:0.5rem ;
+  &__temp {
+    margin-top: 0.5rem;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 1.5rem;
   }
+  /*datos siguientes*/
 
   //modificadores
-  &--primary{
+  &--primary {
     flex-direction: column;
   }
 
@@ -78,11 +73,42 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 10px;
     font-size: 1.2rem;
   }
 
   &--thrid {
-    grid-template-columns: 1fr 1fr;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:  space-evenly;
+    gap: 10px;
+    flex-wrap: wrap;
+    overflow-x:auto;
+
+
+   /*modificar el scrool*/
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+    &::-webkit-scrollbar:vertical {
+      width:10px;
+    }
+    &::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+      display: none;
+    } 
+    &::-webkit-scrollbar:horizontal {
+      height: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #797979;
+      border-radius: 20px;
+      border: 2px solid #f1f2f3;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;  
+    }
+
   }
 }

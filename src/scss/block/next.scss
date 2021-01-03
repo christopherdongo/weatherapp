@@ -1,0 +1,16 @@
+.card2{
+    display: block;
+    position: relative;
+    width: 200px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &:nth-child(1){
+      margin-left: 2620px;
+    }
+    &__divfecha{
+        font-size: 15px;
+    }
+}

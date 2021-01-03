@@ -5,9 +5,10 @@ html(lang='en')
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="icon" type="image/png" href="assets/icons/favicon.png")
     link(rel="stylesheet", href="css/styles.css")
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js", rel)
     title
   body
-    main.first-row
+    main.first-row#first-row
       section.card.card--primary#primary
         h1.card__titleapp Weather App
         form.card__formulary#formulario
@@ -23,8 +24,6 @@ html(lang='en')
           .card__container__description#description 
         .card__humidity#humidity 
         .card__wind#wind 
-      section.card.card--thrid#thrid
+      
         
-
-    
-    script(src="js/scripts-min.js" defer)
+    script(src="js/scripts-min.js")
