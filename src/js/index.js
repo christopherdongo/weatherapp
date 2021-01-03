@@ -5,7 +5,7 @@
   };
 
   //constantes
-  const firstrow= document.getElementById('first-row');
+  const thrid = document.getElementById('thrid');
   const form = document.getElementById("formulario");
   const search = document.getElementById("inputciudad");
   const title = document.getElementById("title");
@@ -16,17 +16,6 @@
   const temperatura = document.getElementById("temp");
   const loader = document.getElementById("loader");
   const error = document.getElementById("error");
-  //const secondary = document.getElementById('secondary');
-  //creacion de elementos para las siguientes tarjetas
-  //const thrid = document.querySelector('#thrid');
-  let  thrid2 = document.createElement('section');
-        thrid2.id="thrid2";
-        thrid2.classList="card card--thrid"
-  let thridremove = document.querySelector('#thrid2'); 
-
-  //segunda tarjeta
-
-  //seleccionar la tarjeta creada
 
   //escucha del formulario
   form.addEventListener("submit", (e) => {
@@ -40,17 +29,14 @@
 
   const obtainsData = (e) => {
     e.preventDefault();
-
-    if(firstrow.children.length==3){
-      console.log('existe')
-      firstrow.parentNode.removeChild(thridremove)
-    }else{
-      console.log('no existe')
+    thrid.style.display="none"
+    /*eliminar los hijos*/ 
+    if(thrid.children.length>=1){
+      while (thrid.firstChild) {
+        thrid.removeChild(thrid.firstChild);
+      }
     }
-   
-      firstrow.appendChild(thrid2)
-    
-    //fetch de los datos
+    //obtener los datos
     const promise1 = fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${search.value}&units=metric&appid=${weather.APIKEY}&lang=es`
     );
@@ -66,10 +52,10 @@
         ObtenerDatos(data), OBtenerDatosNext(nextdata);
       })
       .catch((err) => console.log(err));
+   
     SpinnerViews("block");
     ObtenerError("none");
     Clear();
-    
   };
 
   //function primera tarheta
@@ -78,6 +64,7 @@
       SpinnerViews("none");
       ObtenerError("block");
     } else {
+      thrid.style.display="flex"
       const { name } = data;
       const { icon, description } = data.weather[0];
       const { humidity, temp } = data.main;
@@ -92,7 +79,7 @@
       wind.textContent = " Velocidad del Viento: " + speed + " km/h";
       SpinnerViews("none");
       OBtenerDatosNext;
-      firstrow.appendChild(thrid2)
+      //firstrow.appendChild(thrid2)
     }
   };
   //visualizar datos
@@ -105,7 +92,7 @@
   const SpinnerViews = (views) => {
     loader.style.display = views;
   };
-  //
+  //formateo de datos
   const Clear = () => {
     search.value = "";
     title.innerText = "";
@@ -117,14 +104,12 @@
     wind.textContent = "";
   };
 
-  //function de los dias siguientes!!
+  //function para visualizar los siguientes 5 dias!!
   const OBtenerDatosNext = (nextdata) => {
-   console.log(nextdata)
     let result;
-    //thrid.appendChild(cardnext);
+
     //poner datos en el cardnext
     result = timesConvert(nextdata.list);
-    console.log(result)
   
     result.map( (item, index) => {
       let newElement = document.createElement('article');
@@ -150,7 +135,10 @@
       /*introducir la informacion*/
       divfecha.textContent=item.data.dt_txt
       divtemperatura.innerText = item.data.main.temp + " °C";
-
+      imgicono.src="https://openweathermap.org/img/wn/" + item.data.weather[0].icon + ".png";
+      divdescription2.innerText = item.data.weather[0].description;
+      divhumedad.innerText = 'Humedad: ' + item.data.main.humidity + " %";
+      divwind.innerText="V. del viento: " + item.data.wind.speed + " km/h";
       newElement.id = index; newElement.className = "card2";
       newElement.appendChild(divfecha);
       newElement.appendChild(divtemperatura);
@@ -160,14 +148,12 @@
       cardContainer2.appendChild(imgicono);
       cardContainer2.appendChild(divdescription2);
          return(
-          thrid2.appendChild(newElement)
+          thrid.appendChild(newElement)
          )
     })
     
   };
-
-
-  /*resolucion de los date*/ 
+  /*resolucion de los date transformar formato UNIX */ 
   const timesConvert=(data)=>{
    return data.filter( item => (
     convert(item.dt) === 6 || convert(item.dt) === 12 || convert(item.dt) === 18
@@ -193,6 +179,5 @@
     let t= new Date(dt*1000).getUTCHours();
     return t;
   }
-
 
 })();

@@ -66,9 +66,9 @@
 
   //modificadores
   &--primary {
+    padding-top: 1rem;
     flex-direction: column;
   }
-
   &--secondary {
     flex-direction: column;
     align-items: center;
@@ -76,18 +76,15 @@
     gap: 10px;
     font-size: 1.2rem;
   }
-
   &--thrid {
     height: 200px;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content:  space-evenly;
     gap: 10px;
     flex-wrap: wrap;
     overflow-x:auto;
-
-
+    display: none;
    /*modificar el scrool*/
     &::-webkit-scrollbar {
       -webkit-appearance: none;

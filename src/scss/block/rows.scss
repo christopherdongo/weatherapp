@@ -1,17 +1,15 @@
 .first-row{
   display: grid;
   width: 100%;
-  max-width: 550px;
+  max-width: 480px;
   border-radius: 25px;
   opacity: 0.9;
-  grid-template-columns: 1fr;
-  grid-template-rows:repeat(3, 1fr);
   padding: 1rem;
-  height: 100vh;
   background-color: #000000;
   color: white;
+  box-shadow: var(--shadowblue);
   @media screen and (min-width:768px){
-    height: 80vh;
+    
   }
 
 }

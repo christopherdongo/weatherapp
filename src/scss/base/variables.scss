@@ -1,0 +1,18 @@
+:root{
+    --primaryColor: #3fd0d4;
+    --clr-primary-1: hsl(205, 86%, 17%);
+    --clr-primary-2: hsl(205, 77%, 27%);
+    --mainWhite: #fff;
+    --offWhite: #f7f7f7;
+    --mainBlack: #222;
+    --mainGrey: #ececec;
+    --darkGrey: #cfcfcf;
+    --mainTransition: all 0.3s linear;
+    --mainSpacing: 4px;
+    --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+    --lightShadow2: 2px 3px 0px 0px var(--mainWhite);
+    --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    --shadowblue: 4px 10px 5px 0px var(var(--clr-primary-1));
+    --gradien1:linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(0, 100%, 98%) 100%);
+    --error:hsl(0,93%,68%);
+}
