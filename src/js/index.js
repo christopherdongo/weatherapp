@@ -60,6 +60,7 @@
 
   //function primera tarheta
   const ObtenerDatos = (data) => {
+    console.log(data)
     if (data.message) {
       SpinnerViews("none");
       ObtenerError("block");
@@ -67,16 +68,16 @@
       thrid.style.display="flex"
       const { name } = data;
       const { icon, description } = data.weather[0];
-      const { humidity, temp } = data.main;
+      const { humidity, temp_max } = data.main;
       const { speed } = data.wind;
 
       icono.src = "https://openweathermap.org/img/wn/" + icon + ".png";
       title.innerText = "Clima de " + name;
-      temperatura.innerText = temp + " °C";
+      temperatura.innerText = temp_max + " °C";
       icono.alt = name;
       descripcion.innerText = description;
       humedad.innerText = " Humedad: " + humidity + " %";
-      wind.textContent = " Velocidad del Viento: " + speed + " km/h";
+      wind.textContent = " Velocidad del Viento: " + speed*3.600000 + " km/h";
       SpinnerViews("none");
       OBtenerDatosNext;
       //firstrow.appendChild(thrid2)
@@ -107,6 +108,7 @@
   //function para visualizar los siguientes 5 dias!!
   const OBtenerDatosNext = (nextdata) => {
     let result;
+    console.log(nextdata)
 
     //poner datos en el cardnext
     result = timesConvert(nextdata.list);
@@ -138,7 +140,7 @@
       imgicono.src="https://openweathermap.org/img/wn/" + item.data.weather[0].icon + ".png";
       divdescription2.innerText = item.data.weather[0].description;
       divhumedad.innerText = 'Humedad: ' + item.data.main.humidity + " %";
-      divwind.innerText="V. del viento: " + item.data.wind.speed + " km/h";
+      divwind.innerText="V. del viento: " + (item.data.wind.speed*3.600000).toFixed(2) + " km/h";
       newElement.id = index; newElement.className = "card2";
       newElement.appendChild(divfecha);
       newElement.appendChild(divtemperatura);
