@@ -60,7 +60,6 @@
 
   //function primera tarheta
   const ObtenerDatos = (data) => {
-    console.log(data)
     if (data.message) {
       SpinnerViews("none");
       ObtenerError("block");
@@ -108,8 +107,6 @@
   //function para visualizar los siguientes 5 dias!!
   const OBtenerDatosNext = (nextdata) => {
     let result;
-    console.log(nextdata)
-
     //poner datos en el cardnext
     result = timesConvert(nextdata.list);
   
