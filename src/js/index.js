@@ -77,7 +77,7 @@
       icono.alt = name;
       descripcion.innerText = description;
       humedad.innerText = " Humedad: " + humidity + " %";
-      wind.textContent = " Velocidad del Viento: " + speed*3.600000 + " km/h";
+      wind.textContent = " Velocidad del Viento: " + (speed*3.600000).toFixed(2) + " km/h";
       SpinnerViews("none");
       OBtenerDatosNext;
       //firstrow.appendChild(thrid2)
