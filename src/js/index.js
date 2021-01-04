@@ -16,6 +16,7 @@
   const temperatura = document.getElementById("temp");
   const loader = document.getElementById("loader");
   const error = document.getElementById("error");
+  const date = document.getElementById("date");
 
   //escucha del formulario
   form.addEventListener("submit", (e) => {
@@ -44,14 +45,14 @@
       `https://api.openweathermap.org/data/2.5/forecast?q=${search.value}&units=metric&&appid=${weather.APIKEY}&lang=es`
     );
     //resolver la promesa
-      Promise.all([promise1, promise2])
-        .then((response) => {
-          return Promise.all(response.map((r) => r.json()));
-        })
-        .then(([data, nextdata]) => {
-          ObtenerDatos(data), OBtenerDatosNext(nextdata);
-        })
-        .catch((err) => console.log(err));
+    Promise.all([promise1, promise2])
+      .then((response) => {
+        return Promise.all(response.map((r) => r.json()));
+      })
+      .then(([data, nextdata]) => {
+        ObtenerDatos(data), OBtenerDatosNext(nextdata);
+      })
+      .catch((err) => console.log(err));
 
     SpinnerViews("block");
     ObtenerError("none");
@@ -60,29 +61,30 @@
 
   //function primera tarheta
   const ObtenerDatos = (data) => {
+    console.log(data);
     if (data.message) {
       SpinnerViews("none");
       ObtenerError("block");
     } else {
-   setTimeout(()=>{
-    thrid.style.display = "flex";
-    const { name } = data;
-    const { icon, description } = data.weather[0];
-    const { humidity, temp_max } = data.main;
-    const { speed } = data.wind;
+      setTimeout(() => {
+        thrid.style.display = "flex";
+        const { name, dt } = data;
+        const { icon, description } = data.weather[0];
+        const { humidity, temp_max } = data.main;
+        const { speed } = data.wind;
 
-    icono.src = "https://openweathermap.org/img/wn/" + icon + ".png";
-    title.innerText = "Clima de " + name;
-    temperatura.innerText = temp_max + " °C";
-    icono.alt = name;
-    descripcion.innerText = description;
-    humedad.innerText = " Humedad: " + humidity + " %";
-    wind.textContent =
-      " Velocidad del Viento: " + (speed * 3.6).toFixed(2) + " km/h";
-    SpinnerViews("none");
-    OBtenerDatosNext;
-   },2000)
-
+        icono.src = "https://openweathermap.org/img/wn/" + icon + ".png";
+        title.innerText = "Clima de " + name;
+        temperatura.innerText = temp_max + " °C";
+        icono.alt = name;
+        date.innerHTML = tranformatdateprimary(dt);
+        descripcion.innerText = description;
+        humedad.innerText = " Humedad: " + humidity + " %";
+        wind.textContent =
+          " Velocidad del Viento: " + (speed * 3.6).toFixed(2) + " km/h";
+        SpinnerViews("none");
+        OBtenerDatosNext;
+      }, 1000);
     }
   };
   //visualizar datos
@@ -105,6 +107,7 @@
     descripcion.innerText = "";
     humedad.innerText = "";
     wind.textContent = "";
+    date.innerHTML="";
   };
 
   //function para visualizar los siguientes 5 dias!!
@@ -135,7 +138,7 @@
       divfecha.id = "divfecha";
       divfecha.className = "card2__divfecha";
       /*introducir la informacion*/
-      divfecha.textContent = item.data.dt_txt;
+      divfecha.textContent = transformDate(item.data.dt);
       divtemperatura.innerText = item.data.main.temp + " °C";
       imgicono.src =
         "https://openweathermap.org/img/wn/" +
@@ -186,5 +189,70 @@
   const convertHour = (dt) => {
     let t = new Date(dt * 1000).getUTCHours();
     return t;
+  };
+
+  const tranformatdateprimary=(dt)=>{
+    const d = new Date(dt * 1000);
+    const months = [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Setiembre",
+      "Octtubre",
+      "Noviembre",
+      "Diciembre",
+    ];
+    const days = [
+      "Domingo",
+      "Lunes",
+      "Martes",
+      "Miercoles",
+      "Jueves",
+      "Viernes",
+      "Sabado",
+    ];
+    const dia = days[d.getDay()];
+    const date = d.getDate();
+    const mes = months[d.getMonth()];
+    const anio = d.getFullYear();
+    return `${dia} ${date} ${mes} ${anio}`;
+  }
+  const transformDate = (dt) => {
+    const d = new Date(dt * 1000);
+    const months = [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Setiembre",
+      "Octtubre",
+      "Noviembre",
+      "Diciembre",
+    ];
+    const days = [
+      "Domingo",
+      "Lunes",
+      "Martes",
+      "Miercoles",
+      "Jueves",
+      "Viernes",
+      "Sabado",
+    ];
+    const dia = days[d.getDay()];
+    const date = d.getDate();
+    const mes = months[d.getMonth()];
+    const anio = d.getFullYear();
+    const hour = d.getUTCHours();
+
+    return `${dia} ${date} ${mes} ${anio} ${hour}:00 horas`;
   };
 })();
