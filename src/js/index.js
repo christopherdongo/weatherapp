@@ -131,8 +131,9 @@
       divtemperatura.id = "divtemperature";
       divtemperatura.className = "card2__divtemperature";
       divhumedad.id = "divhumedad";
-      divhumedad.className = "card__divhumedad";
+      divhumedad.className = "card2__divhumedad";
       divwind.id = "divwind";
+      divwind.className="card2__divwind";
       divdescription2.id = "divdescription2";
       imgicono.id = "imgicono";
       divfecha.id = "divfecha";
