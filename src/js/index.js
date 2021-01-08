@@ -18,6 +18,8 @@
   const error = document.getElementById("error");
   const date = document.getElementById("date");
 
+  const fragment = document.createDocumentFragment();
+
   //escucha del formulario
   form.addEventListener("submit", (e) => {
     obtainsData(e);
