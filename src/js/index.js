@@ -83,7 +83,7 @@
         descripcion.innerText = description;
         humedad.innerText = " Humedad: " + humidity + " %";
         wind.textContent =
-          " Velocidad del Viento: " + (speed * 3.6).toFixed(2) + " km/h";
+          " Velocidad del Viento: " + Math.round(speed) + " km/h";
         SpinnerViews("none");
         OBtenerDatosNext;
       }, 1000);
@@ -150,7 +150,7 @@
       divdescription2.innerText = item.data.weather[0].description;
       divhumedad.innerText = "Humedad: " + item.data.main.humidity + " %";
       divwind.innerText =
-        "V. del viento: " + (item.data.wind.speed * 3.6).toFixed(2) + " km/h";
+        "V. del viento: " + Math.round(item.data.wind.speed ) + " km/h";
       newElement.id = index;
       newElement.className = "card2";
       newElement.appendChild(divfecha);

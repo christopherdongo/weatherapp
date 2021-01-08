@@ -28,10 +28,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   var date = document.getElementById("date");
   var fragment = document.createDocumentFragment(); //escucha del formulario
 
-
-  //añadiendo los datos al div correspondiente
-  thrid.appendChild(fragment)
-
   form.addEventListener("submit", function (e) {
     obtainsData(e);
   });
@@ -100,7 +96,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         date.innerHTML = tranformatdateprimary(dt);
         descripcion.innerText = description;
         humedad.innerText = " Humedad: " + humidity + " %";
-        wind.textContent = " Velocidad del Viento: " + (speed * 3.6).toFixed(2) + " km/h";
+        wind.textContent = " Velocidad del Viento: " + Math.round(speed) + " km/h";
         SpinnerViews("none");
         OBtenerDatosNext;
       }, 1000);
@@ -146,8 +142,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       var imgicono = document.createElement("img");
       var divdescription2 = document.createElement("div");
       var divtemperatura = document.createElement("div");
-      
       /*poner datos*/
+
       cardContainer2.id = "container2";
       cardContainer2.className = "card2__container2";
       divtemperatura.id = "divtemperature";
@@ -167,7 +163,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       imgicono.src = "https://openweathermap.org/img/wn/" + item.data.weather[0].icon + ".png";
       divdescription2.innerText = item.data.weather[0].description;
       divhumedad.innerText = "Humedad: " + item.data.main.humidity + " %";
-      divwind.innerText = "V. del viento: " + (item.data.wind.speed * 3.6).toFixed(2) + " km/h";
+      divwind.innerText = "V. del viento: " + Math.round(item.data.wind.speed) + " km/h";
       newElement.id = index;
       newElement.className = "card2";
       newElement.appendChild(divfecha);
@@ -177,8 +173,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       newElement.appendChild(divwind);
       cardContainer2.appendChild(imgicono);
       cardContainer2.appendChild(divdescription2);
-
-      return fragment.appendChild(newElement);
+      return thrid.appendChild(newElement);
     });
   };
   /*resolucion de los date transformar formato UNIX */
