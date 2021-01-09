@@ -223,7 +223,7 @@
     const date = d.getDate();
     const mes = months[d.getMonth()];
     const anio = d.getFullYear();
-    return `${dia} ${date} ${mes} ${anio}`;
+    return `${dia} ${date} ${mes} del ${anio}`;
   }
   const transformDate = (dt) => {
     const d = new Date(dt * 1000);
@@ -256,6 +256,6 @@
     const anio = d.getFullYear();
     const hour = d.getUTCHours();
 
-    return `${dia} ${date} ${mes} ${anio} ${hour}:00 horas`;
+    return `${dia} ${date} ${mes} del ${anio} ${hour}:00 horas`;
   };
 })();

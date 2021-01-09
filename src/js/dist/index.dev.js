@@ -217,7 +217,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     var date = d.getDate();
     var mes = months[d.getMonth()];
     var anio = d.getFullYear();
-    return "".concat(dia, " ").concat(date, " ").concat(mes, " ").concat(anio);
+    return "".concat(dia, " ").concat(date, " ").concat(mes, " del ").concat(anio);
   };
 
   var transformDate = function transformDate(dt) {
@@ -229,6 +229,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     var mes = months[d.getMonth()];
     var anio = d.getFullYear();
     var hour = d.getUTCHours();
-    return "".concat(dia, " ").concat(date, " ").concat(mes, " ").concat(anio, " ").concat(hour, ":00 horas");
+    return "".concat(dia, " ").concat(date, " ").concat(mes, " del ").concat(anio, " ").concat(hour, ":00 horas");
   };
 })();
