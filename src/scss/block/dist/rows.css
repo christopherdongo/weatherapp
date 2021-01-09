@@ -1,4 +1,4 @@
-.first-row{
+.first-row {
   display: grid;
   width: 100%;
   max-width: 480px;
@@ -9,8 +9,4 @@
   color: white;
   box-shadow: var(--shadowblue);
   gap: 1rem;
-  @media screen and (min-width:768px){
-    
-  }
-
 }
