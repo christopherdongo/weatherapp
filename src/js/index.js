@@ -18,7 +18,7 @@
   const error = document.getElementById("error");
   const date = document.getElementById("date");
 
-  const fragment = document.createDocumentFragment();
+ 
 
   //escucha del formulario
   form.addEventListener("submit", (e) => {
@@ -55,7 +55,6 @@
         ObtenerDatos(data), OBtenerDatosNext(nextdata);
       })
       .catch((err) => console.log(err));
-
     SpinnerViews("block");
     ObtenerError("none");
     Clear();
@@ -63,7 +62,6 @@
 
   //function primera tarheta
   const ObtenerDatos = (data) => {
-    console.log(data);
     if (data.message) {
       SpinnerViews("none");
       ObtenerError("block");
@@ -112,6 +110,10 @@
     date.innerHTML="";
   };
 
+  const ClearError = ()=>{
+    error.innerHTML="";
+  }
+
   //function para visualizar los siguientes 5 dias!!
   const OBtenerDatosNext = (nextdata) => {
     let result;
@@ -119,6 +121,7 @@
     result = timesConvert(nextdata.list);
 
     result.map((item, index) => {
+      const fragment = document.createDocumentFragment();
       let newElement = document.createElement("article");
       let cardContainer2 = document.createElement("div");
       let divfecha = document.createElement("div");
@@ -160,7 +163,9 @@
       newElement.appendChild(divwind);
       cardContainer2.appendChild(imgicono);
       cardContainer2.appendChild(divdescription2);
-      return thrid.appendChild(newElement);
+      fragment.appendChild(newElement)
+      /**/
+      return thrid.appendChild(fragment)
     });
   };
   /*resolucion de los date transformar formato UNIX */

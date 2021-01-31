@@ -25,8 +25,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   var temperatura = document.getElementById("temp");
   var loader = document.getElementById("loader");
   var error = document.getElementById("error");
-  var date = document.getElementById("date");
-  var fragment = document.createDocumentFragment(); //escucha del formulario
+  var date = document.getElementById("date"); //escucha del formulario
 
   form.addEventListener("submit", function (e) {
     obtainsData(e);
@@ -72,8 +71,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
   var ObtenerDatos = function ObtenerDatos(data) {
-    console.log(data);
-
     if (data.message) {
       SpinnerViews("none");
       ObtenerError("block");
@@ -126,6 +123,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     humedad.innerText = "";
     wind.textContent = "";
     date.innerHTML = "";
+  };
+
+  var ClearError = function ClearError() {
+    error.innerHTML = "";
   }; //function para visualizar los siguientes 5 dias!!
 
 
@@ -134,6 +135,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
     result = timesConvert(nextdata.list);
     result.map(function (item, index) {
+      var fragment = document.createDocumentFragment();
       var newElement = document.createElement("article");
       var cardContainer2 = document.createElement("div");
       var divfecha = document.createElement("div");
@@ -173,7 +175,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       newElement.appendChild(divwind);
       cardContainer2.appendChild(imgicono);
       cardContainer2.appendChild(divdescription2);
-      return thrid.appendChild(newElement);
+      fragment.appendChild(newElement);
+      /**/
+
+      return thrid.appendChild(fragment);
     });
   };
   /*resolucion de los date transformar formato UNIX */

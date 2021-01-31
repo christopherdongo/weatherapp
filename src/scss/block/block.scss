@@ -94,7 +94,7 @@
     &::-webkit-scrollbar:vertical {
       width:10px;
     }
-    &::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    &::-webkit-scrollbar-button:increment, ::-webkit-scrollbar-button {
       display: none;
     } 
     &::-webkit-scrollbar:horizontal {
